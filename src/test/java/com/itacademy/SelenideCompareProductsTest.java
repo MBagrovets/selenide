@@ -1,18 +1,15 @@
 package com.itacademy;
 
-import com.google.common.annotations.VisibleForTesting;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class CompareProductsTest {
+public class SelenideCompareProductsTest {
     @Test
     public void test1() throws InterruptedException {
 
