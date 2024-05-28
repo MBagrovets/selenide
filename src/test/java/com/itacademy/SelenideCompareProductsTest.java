@@ -1,7 +1,11 @@
 package com.itacademy;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import com.itacademy.listeners.LocalListener;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -10,11 +14,21 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SelenideCompareProductsTest {
+
+    @BeforeMethod
+    public void setUp(){
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+        );
+        SelenideLogger.addListener("localListener", new LocalListener());
+    }
     @Test
     public void test1() throws InterruptedException {
 
         open("https://react-shopping-cart-67954.firebaseapp.com/"); //поднимает драйвер и создает сессию
         String itemInCatalogText = $(By.xpath("//p[@class = 'sc-124al1g-4 eeXMBo']")).getText();
+
         $(By.xpath("//*[@class = 'sc-124al1g-0 jCsgpZ']")).click();
         String itemInBasketText = $(By.xpath("//p[@class = 'sc-11uohgb-2 elbkhN']")).getText();
         Thread.sleep(4000);
