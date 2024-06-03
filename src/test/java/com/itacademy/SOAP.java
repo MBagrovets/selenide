@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 public class SOAP {
 
     @Test
-    public void soapTest() {
+    public void soapTest() {          //post метод + wsdl обязательны!!!
         Response response = given().contentType("application/soap+xml").body("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://www.dataaccess.com/webservicesserver/\">\n" +
                         "   <soapenv:Header/>\n" +
                         "   <soapenv:Body>\n" +

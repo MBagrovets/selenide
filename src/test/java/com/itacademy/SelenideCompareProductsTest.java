@@ -2,6 +2,8 @@ package com.itacademy;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.itacademy.listeners.LocalListener;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -74,6 +76,11 @@ public class SelenideCompareProductsTest {
         open("https://react-shopping-cart-67954.firebaseapp.com/");
         List <String> listOfProductsNaming = $$(By.xpath("//*[@class = 'sc-ebmerl-4 iliWeY']/p")).texts();
         $(By.xpath("//span[@class = 'checkmark']")).click();
+
+//        login();          - Аллюр (первый способ) - разбиение на иерархии в Аллюре ( + метод ниже)
+
+//        Allure.attachment("attachment", myfilePath);    - Аллюр (второй способ)
+
         Thread.sleep(3000);
         List<String> sizeListOfProductsNaming = $$(By.xpath("//*[@class = 'sc-ebmerl-4 iliWeY']/p")).texts();
         if (listOfProductsNaming.equals(sizeListOfProductsNaming)) {
@@ -82,8 +89,10 @@ public class SelenideCompareProductsTest {
             System.out.println("Списки продуктов не совпадают");
         }
     }
-
-
-
-
+//    @Step (value = "login")           - Аллюр (первый способ) - разбиение на иерархии в Аллюре ( + метод выше)
+//    public void login(){
+//        open("https://react-shopping-cart-67954.firebaseapp.com/");
+//        List <String> listOfProductsNaming = $$(By.xpath("//*[@class = 'sc-ebmerl-4 iliWeY']/p")).texts();
+//        $(By.xpath("//span[@class = 'checkmark']")).click();
+//    }
 }
