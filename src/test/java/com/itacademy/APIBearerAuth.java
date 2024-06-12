@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class BearerAuth {
+public class APIBearerAuth {
 
     String token;
 

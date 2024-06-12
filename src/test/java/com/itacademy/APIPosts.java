@@ -4,13 +4,12 @@ import io.restassured.RestAssured;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class Posts {
+public class APIPosts {
 
     int id;
 
